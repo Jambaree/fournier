@@ -2,12 +2,22 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #171717;
   --font-sans: var(--font-montserrat);
+
+  /* Brand colors from jamCMS theme options */
+  --color-primary: #3c9fdf;
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #b64283;
+  --color-secondary-contrast: #414141;
+  --color-background-one: #3c9fdf;
+  --color-background-two: #aa2424;
+
+  /* Blue-gray for footer */
+  --color-blue-gray-950: #121827;
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: #ffffff;
+  color: #414141;
+  font-family: var(--font-sans);
 }

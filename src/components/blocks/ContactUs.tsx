@@ -34,7 +34,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
               {email && (
                 <a
                   href={`mailto:${email.trim()}`}
-                  className="text-indigo-500 leading-relaxed text-xs md:text-base"
+                  className="text-primary leading-relaxed text-xs md:text-base"
                 >
                   {email.trim()}
                 </a>
@@ -43,7 +43,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
               {phone && (
                 <a
                   href={`tel:${phone}`}
-                  className="text-indigo-500 leading-relaxed text-xs md:text-base"
+                  className="text-primary leading-relaxed text-xs md:text-base"
                 >
                   {phone}
                 </a>

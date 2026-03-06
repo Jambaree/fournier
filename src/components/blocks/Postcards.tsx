@@ -10,9 +10,10 @@ type PostcardItem = {
 
 export default function Postcards({ items, bgcolor }: ACFBlock) {
   const postcardItems = items as unknown as PostcardItem[] | undefined;
+  const bgClass = bgcolor ? `bg-${bgcolor}` : "bg-background-one";
 
   return (
-    <section className="bg-gray-800 text-white pb-16">
+    <section className={`${bgClass} text-primary-contrast pb-16`}>
       <div className="container px-5 py-10 mx-auto">
         <div className="flex flex-wrap -mx-4 -mb-10 text-center">
           {postcardItems?.map((o, idx) => (
@@ -25,7 +26,7 @@ export default function Postcards({ items, bgcolor }: ACFBlock) {
                     className="object-cover object-center h-full w-full"
                   />
                 ) : (
-                  <div className="h-full w-full bg-gray-600" />
+                  <img alt="content" className="object-cover object-center h-full w-full" src="https://dummyimage.com/1201x501" />
                 )}
               </div>
               {o.headline && (

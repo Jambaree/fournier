@@ -51,9 +51,10 @@ export default function Reviews({ items, buttons }: ACFBlock) {
                 )}
                 <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4" />
                 {o.person && (
-                  <h2 className="text-gray-900 font-medium tracking-wider text-sm">
-                    {o.person}
-                  </h2>
+                  <h2
+                    className="text-gray-900 font-medium tracking-wider text-sm"
+                    dangerouslySetInnerHTML={{ __html: o.person }}
+                  />
                 )}
                 {o.position && <p className="text-gray-500">{o.position}</p>}
               </div>

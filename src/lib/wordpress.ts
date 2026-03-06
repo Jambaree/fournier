@@ -140,6 +140,18 @@ export async function getPageByUri(uri: string) {
         slug
         uri
         content
+        seo {
+          title
+          metaDesc
+          canonical
+          fullHead
+          opengraphTitle
+          opengraphDescription
+          opengraphImage { sourceUrl }
+          opengraphSiteName
+          opengraphType
+          schema { raw }
+        }
         template {
           templateName
           ... on DefaultTemplate {
@@ -249,12 +261,26 @@ export type ACFBlock = {
   formid?: number;
 };
 
+export type YoastSEO = {
+  title: string;
+  metaDesc: string;
+  canonical: string;
+  fullHead: string;
+  opengraphTitle: string;
+  opengraphDescription: string;
+  opengraphImage: WPImage | null;
+  opengraphSiteName: string;
+  opengraphType: string;
+  schema: { raw: string };
+};
+
 export type WPPage = {
   id: string;
   title: string;
   slug: string;
   uri: string;
   content: string;
+  seo: YoastSEO;
   template: {
     templateName: string;
     acf?: {

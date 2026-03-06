@@ -48,7 +48,7 @@ export default function GravityFormClient({ form, heading }: Props) {
   if (submitted) {
     return (
       <div
-        className="rounded-lg bg-green-50 p-6 text-green-800"
+        className="relative mb-4 bg-primary text-sm text-primary-contrast p-7"
         dangerouslySetInnerHTML={{ __html: confirmationMessage }}
       />
     );
@@ -61,10 +61,7 @@ export default function GravityFormClient({ form, heading }: Props) {
   return (
     <div className="w-full">
       {heading && (
-        <h2 className="mb-6 text-2xl font-bold">{heading}</h2>
-      )}
-      {form.title && !heading && (
-        <h2 className="mb-6 text-2xl font-bold">{form.title}</h2>
+        <h2 className="mb-6 text-2xl font-bold text-gray-900">{heading}</h2>
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -82,7 +79,7 @@ export default function GravityFormClient({ form, heading }: Props) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-md bg-black px-6 py-3 text-white transition-colors hover:bg-gray-800 disabled:opacity-50"
+          className="text-primary-contrast bg-primary border-0 py-2 px-6 focus:outline-none hover:opacity-80 rounded text-lg disabled:opacity-50"
         >
           {isSubmitting ? "Submitting..." : form.button?.text || "Submit"}
         </button>
@@ -103,15 +100,18 @@ function FormField({
   const name = `input_${field.id}`;
   const validation = field.isRequired ? { required: `${field.label} is required` } : {};
 
+  const inputClasses = "relative h-[62px] w-full m-0 bg-transparent border border-[#e5efef] appearance-none rounded-none shadow-none outline-none px-5 py-4 focus:border-primary";
+  const labelClasses = "block text-xs uppercase font-bold pb-2";
+
   switch (field.type) {
     case "textarea":
       return (
-        <div>
-          <label className="mb-1 block text-sm font-medium">{field.label}</label>
+        <div className="mb-6">
+          <label className={labelClasses}>{field.label}</label>
           <textarea
             {...register(name, validation)}
             placeholder={field.placeholder}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-black focus:outline-none"
+            className="relative w-full m-0 bg-transparent border border-[#e5efef] appearance-none rounded-none shadow-none outline-none px-5 py-4 focus:border-primary min-h-[150px] max-w-full"
             rows={4}
           />
           {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
@@ -120,11 +120,11 @@ function FormField({
 
     case "select":
       return (
-        <div>
-          <label className="mb-1 block text-sm font-medium">{field.label}</label>
+        <div className="mb-6">
+          <label className={labelClasses}>{field.label}</label>
           <select
             {...register(name, validation)}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-black focus:outline-none"
+            className={inputClasses}
           >
             <option value="">{field.placeholder || "Select..."}</option>
             {field.choices?.map((choice) => (
@@ -139,8 +139,8 @@ function FormField({
 
     case "checkbox":
       return (
-        <div>
-          <span className="mb-1 block text-sm font-medium">{field.label}</span>
+        <div className="mb-6">
+          <span className={labelClasses}>{field.label}</span>
           {field.choices?.map((choice) => (
             <label key={choice.value} className="flex items-center gap-2">
               <input
@@ -157,8 +157,8 @@ function FormField({
 
     case "radio":
       return (
-        <div>
-          <span className="mb-1 block text-sm font-medium">{field.label}</span>
+        <div className="mb-6">
+          <span className={labelClasses}>{field.label}</span>
           {field.choices?.map((choice) => (
             <label key={choice.value} className="flex items-center gap-2">
               <input
@@ -175,8 +175,8 @@ function FormField({
 
     case "email":
       return (
-        <div>
-          <label className="mb-1 block text-sm font-medium">{field.label}</label>
+        <div className="mb-6">
+          <label className={labelClasses}>{field.label}</label>
           <input
             type="email"
             {...register(name, {
@@ -184,7 +184,7 @@ function FormField({
               pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
             })}
             placeholder={field.placeholder}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-black focus:outline-none"
+            className={inputClasses}
           />
           {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
         </div>
@@ -192,13 +192,13 @@ function FormField({
 
     case "phone":
       return (
-        <div>
-          <label className="mb-1 block text-sm font-medium">{field.label}</label>
+        <div className="mb-6">
+          <label className={labelClasses}>{field.label}</label>
           <input
             type="tel"
             {...register(name, validation)}
             placeholder={field.placeholder}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-black focus:outline-none"
+            className={inputClasses}
           />
           {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
         </div>
@@ -206,13 +206,13 @@ function FormField({
 
     default:
       return (
-        <div>
-          <label className="mb-1 block text-sm font-medium">{field.label}</label>
+        <div className="mb-6">
+          <label className={labelClasses}>{field.label}</label>
           <input
             type="text"
             {...register(name, validation)}
             placeholder={field.placeholder}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-black focus:outline-none"
+            className={inputClasses}
           />
           {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
         </div>

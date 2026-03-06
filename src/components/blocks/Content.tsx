@@ -4,7 +4,7 @@ export default function Content({ image, headline, subline }: ACFBlock) {
   const hasSubline = subline && subline.length > 8;
 
   return (
-    <section className="text-gray-800 pb-16">
+    <section className="text-secondary-contrast pb-16">
       <div
         className={`w-full mx-auto flex ${hasSubline ? "pb-10" : "pb-0"} items-center justify-center flex-col`}
       >
@@ -16,19 +16,23 @@ export default function Content({ image, headline, subline }: ACFBlock) {
               className={`object-cover h-full w-full ${headline ? "mb-10" : "mb-0"}`}
             />
           ) : (
-            <div className={`w-full h-36 bg-gray-200 ${headline ? "mb-10" : "mb-0"}`} />
+            <img
+              className={`object-fit w-full ${headline ? "mb-10" : "mb-0"}`}
+              alt="hero"
+              src="https://dummyimage.com/1620x140"
+            />
           )}
         </div>
-        <div className="text-start lg:w-2/3 w-5/6">
-          {headline && (
+        <div className="text-secondary-contrast text-start lg:w-2/3 w-5/6 m-0">
+          {headline && headline.length !== 0 && (
             <h1
-              className="font-black sm:text-4xl text-3xl my-6"
+              className="font-black sm:text-4xl text-3xl my-6 text-background-one"
               dangerouslySetInnerHTML={{ __html: headline }}
             />
           )}
           {hasSubline && (
             <div
-              className="prose max-w-none text-start"
+              className="prose max-w-none text-start [&]:text-[rgba(0,0,0,0.85)] [&_ol>li::before]:text-[rgba(0,0,0,0.85)] [&_ul>li::before]:bg-[rgba(0,0,0,0.85)]"
               dangerouslySetInnerHTML={{ __html: subline }}
             />
           )}
