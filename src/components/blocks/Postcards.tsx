@@ -10,10 +10,9 @@ type PostcardItem = {
 
 export default function Postcards({ items, bgcolor }: ACFBlock) {
   const postcardItems = items as unknown as PostcardItem[] | undefined;
-  const bgClass = bgcolor ? `bg-${bgcolor}` : "bg-background-one";
 
   return (
-    <section className={`${bgClass} text-primary-contrast pb-16`}>
+    <section className={`bg-${bgcolor || "gray-600"} text-primary-contrast body-font pb-16`}>
       <div className="container px-5 py-10 mx-auto">
         <div className="flex flex-wrap -mx-4 -mb-10 text-center">
           {postcardItems?.map((o, idx) => (
@@ -22,11 +21,15 @@ export default function Postcards({ items, bgcolor }: ACFBlock) {
                 {o.image ? (
                   <img
                     src={o.image.sourceUrl}
-                    alt={o.image.altText || ""}
+                    alt={o.image.altText || "content"}
                     className="object-cover object-center h-full w-full"
                   />
                 ) : (
-                  <img alt="content" className="object-cover object-center h-full w-full" src="https://dummyimage.com/1201x501" />
+                  <img
+                    alt="content"
+                    className="object-cover object-center h-full w-full"
+                    src="https://dummyimage.com/1201x501"
+                  />
                 )}
               </div>
               {o.headline && (
@@ -41,13 +44,15 @@ export default function Postcards({ items, bgcolor }: ACFBlock) {
                   dangerouslySetInnerHTML={{ __html: o.text }}
                 />
               )}
-              {o.buttons && o.buttons.length > 0 && (
-                <div className="flex items-center pt-5 justify-center align-middle gap-4">
-                  {o.buttons.map((obj, i) => (
+              <div
+                className={`flex items-center ${o.buttons && o.buttons.length > 0 ? "pt-5" : ""} justify-center align-middle`}
+              >
+                {o.buttons &&
+                  o.buttons.length > 0 &&
+                  o.buttons.map((obj, i) => (
                     <Button key={i} {...obj.button} variant={obj.variant} />
                   ))}
-                </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

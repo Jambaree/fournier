@@ -44,13 +44,13 @@ export default function AngledImage({ headline, image, text, buttons }: ACFBlock
               dangerouslySetInnerHTML={{ __html: text }}
             />
           )}
-          {buttons && buttons.length > 0 && (
-            <div className="flex items-center gap-4">
-              {buttons.map((o, i) => (
+          <div className="flex items-center">
+            {buttons &&
+              buttons.length > 0 &&
+              buttons.map((o, i) => (
                 <Button key={i} {...o.button} variant={o.variant} />
               ))}
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

@@ -2,16 +2,14 @@ import type { ACFBlock } from "@/lib/wordpress";
 import Button from "./Button";
 
 export default function Hero({ image, headline, subline, buttons, alignment, bgcolor }: ACFBlock) {
-  const bgClass = bgcolor ? `bg-${bgcolor}` : "bg-background-one";
-
   return (
-    <section className={`${bgClass} text-primary-contrast pb-16`}>
+    <section className={`bg-${bgcolor || "gray-600"} text-primary-contrast body-font pb-16`}>
       <div className="w-full mx-auto flex items-center justify-center flex-col">
-        <div className="w-full mb-2 md:mb-8">
+        <div className="w-full mb-[10px] md:mb-[30px]">
           {image ? (
             <img
               src={image.sourceUrl}
-              alt={image.altText || ""}
+              alt={image.altText || "hero"}
               className="object-cover h-full w-full mb-10"
             />
           ) : (
@@ -27,17 +25,17 @@ export default function Hero({ image, headline, subline, buttons, alignment, bgc
           )}
           {subline && (
             <div
-              className="prose prose-invert max-w-none my-8 text-start [&_p]:text-white [&_h2]:text-white [&_h2]:font-black [&_h2]:text-4xl [&_h3]:text-white [&_h3]:font-bold [&_ol>li::before]:text-white [&_ul>li::before]:bg-white"
+              className="prose my-[30px] max-w-full text-start [&_p]:text-white [&_h1]:text-[#060606] [&_h1]:font-black [&_h2]:text-white [&_h2]:font-black [&_h2]:text-[2.25em] [&_h3]:text-white [&_h3]:font-bold [&_ol>li::before]:text-white [&_ul>li::before]:bg-white"
               dangerouslySetInnerHTML={{ __html: subline }}
             />
           )}
-          {buttons && buttons.length > 0 && (
-            <div className={`flex justify-center py-5 w-full gap-4`}>
-              {buttons.map((obj, i) => (
+          <div className={`flex justify-center ${buttons && buttons.length > 0 ? "py-5" : ""} w-full`}>
+            {buttons &&
+              buttons.length > 0 &&
+              buttons.map((obj, i) => (
                 <Button key={i} {...obj.button} variant={obj.variant} />
               ))}
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

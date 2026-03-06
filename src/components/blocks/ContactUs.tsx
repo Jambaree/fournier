@@ -5,7 +5,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
   const formBlock = flex?.find((f) => "formid" in f) as FormFlex | undefined;
 
   return (
-    <section className="text-gray-600 relative pb-16">
+    <section className="text-gray-600 body-font relative pb-16">
       <div className="container px-5 pt-10 mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           {link?.url && (
@@ -21,7 +21,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
           )}
           <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md w-full">
             <div className="lg:w-1/2 px-2 md:px-6 mt-4 lg:mt-0 break-all">
-              <h2 className="font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
+              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
               {address && (
                 <p
                   className="mt-1 text-xs md:text-base"
@@ -30,7 +30,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
               )}
             </div>
             <div className="lg:w-1/2 px-2 md:px-6 mt-4 lg:mt-0 break-all">
-              <h2 className="font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
+              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
               {email && (
                 <a
                   href={`mailto:${email.trim()}`}
@@ -39,7 +39,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
                   {email.trim()}
                 </a>
               )}
-              <h2 className="font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
+              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
               {phone && (
                 <a
                   href={`tel:${phone}`}
@@ -55,7 +55,7 @@ export default function ContactUs({ headline, subline, text, email, phone, addre
         <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
           {headline && (
             <h2
-              className="text-gray-900 text-lg mb-1 font-medium"
+              className="text-gray-900 text-lg mb-1 font-medium title-font"
               dangerouslySetInnerHTML={{ __html: headline }}
             />
           )}
