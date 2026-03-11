@@ -6,13 +6,9 @@ export default function TextImage({ image, headline, text, buttons, alignment }:
 
   return (
     <div className="py-8">
-      <div className="grid mx-auto w-5/6 m-0 lg:w-2/3 gap-0 row-gap-5 md:row-gap-8 sm:mx-auto lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid mx-auto w-5/6 m-0 lg:w-2/3 gap-0 gap-y-5 md:gap-y-8 sm:mx-auto lg:grid-cols-2 xl:grid-cols-3">
         <div
-          className="w-full"
-          style={{
-            gridColumnStart: imageFirst ? 1 : undefined,
-            gridRowStart: 1,
-          }}
+          className={`w-full ${imageFirst ? "lg:col-start-1 xl:col-start-1" : "lg:col-start-2 xl:col-start-3"} lg:row-start-1`}
         >
           {image && (
             <img
@@ -23,8 +19,7 @@ export default function TextImage({ image, headline, text, buttons, alignment }:
           )}
         </div>
         <div
-          className="w-full pt-10 lg:p-[30px] xl:col-span-2"
-          style={{ gridRowStart: 1 }}
+          className={`w-full pt-10 lg:p-[30px] ${imageFirst ? "lg:col-start-2 lg:col-end-3 xl:col-start-2 xl:col-end-4" : "lg:col-start-1 lg:col-end-2 xl:col-start-1 xl:col-end-3"} xl:row-start-1`}
         >
           {headline && (
             <h2
@@ -39,7 +34,7 @@ export default function TextImage({ image, headline, text, buttons, alignment }:
             />
           )}
           {buttons && buttons.length > 0 && (
-            <div className={`flex justify-left mt-8`}>
+            <div className="flex justify-left mt-8">
               {buttons.map((obj, i) => (
                 <Button key={i} {...obj.button} variant={obj.variant} />
               ))}

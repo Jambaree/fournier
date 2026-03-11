@@ -22,7 +22,7 @@ export default function Cards({ introduction, columns, items }: ACFBlock) {
             />
           </div>
         )}
-        <div className={`grid gap-4 row-gap-5 sm:grid-cols-${cols > 1 ? 2 : 1} lg:grid-cols-${cols}`}>
+        <div className={`grid gap-4 gap-y-5 ${cols > 1 ? "sm:grid-cols-2" : "sm:grid-cols-1"} ${cols === 1 ? "lg:grid-cols-1" : cols === 2 ? "lg:grid-cols-2" : cols === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {cardItems?.map((o, i) => (
             <div key={i} className="flex flex-col justify-between p-5 border rounded shadow-sm bg-white">
               <div className="mr-4">

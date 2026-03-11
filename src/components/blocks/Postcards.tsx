@@ -8,11 +8,19 @@ type PostcardItem = {
   buttons: AcfButton[];
 };
 
+const BG_MAP: Record<string, string> = {
+  "background-one": "bg-background-one",
+  "background-two": "bg-background-two",
+  "primary": "bg-primary",
+  "secondary": "bg-secondary",
+};
+
 export default function Postcards({ items, bgcolor }: ACFBlock) {
   const postcardItems = items as unknown as PostcardItem[] | undefined;
+  const bgClass = bgcolor ? (BG_MAP[bgcolor] || "bg-gray-600") : "bg-gray-600";
 
   return (
-    <section className={`bg-${bgcolor || "gray-600"} text-primary-contrast body-font pb-16`}>
+    <section className={`${bgClass} text-primary-contrast body-font pb-16`}>
       <div className="container px-5 py-10 mx-auto">
         <div className="flex flex-wrap -mx-4 -mb-10 text-center">
           {postcardItems?.map((o, idx) => (

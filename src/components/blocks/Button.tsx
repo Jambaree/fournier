@@ -1,9 +1,7 @@
 import Link from "next/link";
 import type { AcfLink } from "@/lib/wordpress";
 
-type Props = AcfLink & {
-  variant?: string;
-};
+type Props = AcfLink & { variant?: string };
 
 export default function Button({ url, title, target, variant }: Props) {
   if (!url || !title) return null;
@@ -13,7 +11,7 @@ export default function Button({ url, title, target, variant }: Props) {
   let className = "";
   if (variant === "filled") {
     className =
-      "inline-flex items-center justify-center h-12 px-10 py-2 font-medium tracking-wide text-background-one transition duration-200 rounded shadow-md bg-primary-contrast text-primary-contrast hover:opacity-50 focus:shadow-outline focus:outline-none";
+      "inline-flex items-center justify-center h-12 px-10 py-2 font-medium tracking-wide text-background-one transition duration-200 rounded shadow-md bg-primary-contrast hover:opacity-50 focus:shadow-outline focus:outline-none";
   } else if (variant === "text") {
     className =
       "inline-flex items-center font-semibold border-background-one border-2 px-10 py-2 rounded duration-200 text-secondary-contrast";
@@ -24,9 +22,10 @@ export default function Button({ url, title, target, variant }: Props) {
       <a
         href={url}
         className={className}
+        title={title}
+        aria-label={title}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={title}
       >
         {title}
       </a>

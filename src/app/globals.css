@@ -9,6 +9,7 @@
   --color-primary-contrast: #ffffff;
   --color-secondary: #b64283;
   --color-secondary-contrast: #414141;
+  --color-background: transparent;
   --color-background-one: #3c9fdf;
   --color-background-two: #aa2424;
 
@@ -18,16 +19,15 @@
   --color-teal-accent-400: #1de9b6;
   --color-deep-purple-accent-400: #651fff;
   --color-deep-purple-accent-700: #6200ea;
-}
 
-html {
-  font-size: 14px;
+  /* Custom box shadow matching old config */
+  --shadow-outline: 0 0 0 3px rgba(101, 31, 255, 0.4);
 }
 
 body {
   background: #ffffff;
   color: #414141;
-  font-family: var(--font-sans);
+  font-size: 14px;
   line-height: 1.5;
 }
 

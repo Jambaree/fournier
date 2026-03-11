@@ -55,7 +55,7 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  const blocks = page.template?.acf?.blocks?.flex;
+  const blocks = page.blocks;
 
   return (
     <>

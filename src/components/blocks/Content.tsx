@@ -26,7 +26,7 @@ export default function Content({ image, headline, subline }: ACFBlock) {
         <div className="text-secondary-contrast text-start lg:w-2/3 w-5/6 m-0">
           {headline && headline.length !== 0 && (
             <h1
-              className="font-black sm:text-4xl text-3xl my-6 font-medium text-background-one"
+              className="font-black sm:text-4xl text-3xl my-6 text-background-one"
               dangerouslySetInnerHTML={{ __html: headline }}
             />
           )}

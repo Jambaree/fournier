@@ -15,20 +15,20 @@ import Content from "./Content";
 import Resources from "./Resources";
 
 const BLOCK_MAP: Record<string, React.ComponentType<ACFBlock>> = {
-  DefaultTemplate_Acf_Blocks_Flex_Hero: Hero,
-  DefaultTemplate_Acf_Blocks_Flex_Cards: Cards,
-  DefaultTemplate_Acf_Blocks_Flex_Textimage: TextImage,
-  DefaultTemplate_Acf_Blocks_Flex_Texteditor: TextEditor,
-  DefaultTemplate_Acf_Blocks_Flex_Postcards: Postcards,
-  DefaultTemplate_Acf_Blocks_Flex_Quote: Quote,
-  DefaultTemplate_Acf_Blocks_Flex_Angledimage: AngledImage,
-  DefaultTemplate_Acf_Blocks_Flex_Contactus: ContactUs,
-  DefaultTemplate_Acf_Blocks_Flex_Form: Form,
-  DefaultTemplate_Acf_Blocks_Flex_Cta: Cta,
-  DefaultTemplate_Acf_Blocks_Flex_Downloads: Downloads,
-  DefaultTemplate_Acf_Blocks_Flex_Reviews: Reviews,
-  DefaultTemplate_Acf_Blocks_Flex_Content: Content,
-  DefaultTemplate_Acf_Blocks_Flex_Resources: Resources,
+  hero: Hero,
+  cards: Cards,
+  textimage: TextImage,
+  texteditor: TextEditor,
+  postcards: Postcards,
+  quote: Quote,
+  angledimage: AngledImage,
+  contactus: ContactUs,
+  form: Form,
+  cta: Cta,
+  downloads: Downloads,
+  reviews: Reviews,
+  content: Content,
+  resources: Resources,
 };
 
 type Props = {

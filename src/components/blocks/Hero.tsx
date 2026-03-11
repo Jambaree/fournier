@@ -1,11 +1,19 @@
 import type { ACFBlock } from "@/lib/wordpress";
 import Button from "./Button";
 
+const BG_MAP: Record<string, string> = {
+  "background-one": "bg-background-one",
+  "background-two": "bg-background-two",
+  "primary": "bg-primary",
+  "secondary": "bg-secondary",
+};
+
 export default function Hero({ image, headline, subline, buttons, alignment, bgcolor }: ACFBlock) {
+  const bgClass = bgcolor ? (BG_MAP[bgcolor] || "bg-gray-600") : "bg-gray-600";
   return (
-    <section className={`bg-${bgcolor || "gray-600"} text-primary-contrast body-font pb-16`}>
+    <section className={`${bgClass} text-primary-contrast body-font pb-16`}>
       <div className="w-full mx-auto flex items-center justify-center flex-col">
-        <div className="w-full mb-[10px] md:mb-[30px]">
+        <div className="w-full h-full mb-[10px] sm:mb-[30px]">
           {image ? (
             <img
               src={image.sourceUrl}
@@ -25,7 +33,7 @@ export default function Hero({ image, headline, subline, buttons, alignment, bgc
           )}
           {subline && (
             <div
-              className="prose my-[30px] max-w-full text-start [&_p]:text-white [&_h1]:text-[#060606] [&_h1]:font-black [&_h2]:text-white [&_h2]:font-black [&_h2]:text-[2.25em] [&_h3]:text-white [&_h3]:font-bold [&_ol>li::before]:text-white [&_ul>li::before]:bg-white"
+              className="prose my-[30px] max-w-full text-start text-white [&_p]:text-white [&_h1]:text-[#060606] [&_h1]:font-black [&_h2]:text-white [&_h2]:font-black [&_h2]:text-[2.25em] [&_h3]:text-white [&_h3]:font-bold [&_ol>li::before]:text-white [&_ul>li::before]:bg-white"
               dangerouslySetInnerHTML={{ __html: subline }}
             />
           )}

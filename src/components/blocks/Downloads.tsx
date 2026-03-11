@@ -18,7 +18,7 @@ export default function Downloads({ items }: ACFBlock) {
           {downloadItems?.map((o, idx) => (
             <div
               key={idx}
-              className="grid mx-auto w-5/6 py-4 lg:w-2/3 gap-0 row-gap-5 md:row-gap-8 sm:mx-auto lg:grid-cols-2 xl:grid-cols-3"
+              className="grid mx-auto w-5/6 py-4 lg:w-2/3 gap-0 gap-y-5 md:gap-y-8 sm:mx-auto lg:grid-cols-2 xl:grid-cols-3"
             >
               <div className="lg:row-start-1 lg:col-start-1 md:w-64 lg:mb-0 mb-6 flex-shrink-0 flex flex-col break-all">
                 {o.category && (
@@ -47,7 +47,7 @@ export default function Downloads({ items }: ACFBlock) {
                   <a
                     href={o.link.url}
                     className="text-indigo-500 inline-flex items-center mt-4"
-                    target={o.link.target || undefined}
+                    target={o.link.target === "_blank" ? "_blank" : undefined}
                     rel={o.link.target === "_blank" ? "noopener noreferrer" : undefined}
                   >
                     {o.link.title}

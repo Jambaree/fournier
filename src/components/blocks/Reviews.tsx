@@ -18,8 +18,8 @@ export default function Reviews({ items, buttons }: ACFBlock) {
           {reviewItems?.map((o, idx) => (
             <div
               key={idx}
-              className={`w-full md:w-1/2 lg:${
-                (reviewItems?.length ?? 0) > 2 ? "w-1/3" : (reviewItems?.length ?? 0) > 1 ? "w-1/2" : "w-full"
+              className={`w-full md:w-1/2 ${
+                (reviewItems?.length ?? 0) > 2 ? "lg:w-1/3" : (reviewItems?.length ?? 0) > 1 ? "lg:w-1/2" : "lg:w-full"
               } lg:mb-0 mb-6 p-4`}
             >
               <div className="h-full text-center">
